@@ -30,6 +30,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Generated API clients
+frontend/src/api-client/
+
 # Build/Dist
 dist/
 build/
