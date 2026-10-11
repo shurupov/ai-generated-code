@@ -1,0 +1,46 @@
+openapi: 3.0.0
+info:
+  title: Math Expression Evaluator API
+  description: A simple API to evaluate mathematical expressions.
+  version: 1.0.0
+servers:
+  - url: /api
+paths:
+  /v1/calculate:
+    post:
+      tags:
+        - Calculate
+      summary: Calculate a mathematical expression
+      operationId: calculate
+      description: Receives a mathematical expression and returns the computed result.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalculateRequest'
+      responses:
+        '200':
+          description: Successful calculation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculateResponse'
+components:
+  schemas:
+    CalculateRequest:
+      type: object
+      properties:
+        expression:
+          type: string
+          description: The mathematical expression to evaluate.
+          example: "2 + 2 * 5"
+      required:
+        - expression
+    CalculateResponse:
+      type: object
+      properties:
+        result:
+          type: number
+          description: The result of the evaluation.
+          example: 12
