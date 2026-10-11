@@ -1,10 +1,21 @@
 version: '3.8'
 
 services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: math-evaluator-backend
+    ports:
+      - "8080:8080"
+
   swagger-ui:
     image: swaggerapi/swagger-ui
-    container_name: swagger-ui-aigc
+    container_name: math-evaluator-swagger
     ports:
       - "8081:8080"
     environment:
+      # URL должен быть доступен браузеру пользователя
       API_URL: http://localhost:8080/api/openapi.yaml
+    depends_on:
+      - backend
