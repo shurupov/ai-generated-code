@@ -1,5 +1,5 @@
 # Build stage
-FROM maven:3.9-eclipse-temurin-17 AS build
+FROM maven:3.9-eclipse-temurin-21 AS build
 WORKDIR /app
 
 # Copy the entire project context to allow access to the api folder
@@ -9,7 +9,7 @@ COPY . .
 RUN cd backend && ./mvnw clean package -DskipTests
 
 # Runtime stage
-FROM eclipse-temurin:17-jre-alpine
+FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 
 # Copy the generated jar from the build stage

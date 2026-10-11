@@ -2,7 +2,7 @@
 FROM node:20-alpine AS build
 
 # Install OpenJDK JRE for openapi-generator-cli
-RUN apk add --no-cache openjdk17-jre-headless
+RUN apk add --no-cache openjdk21-jre-headless
 
 WORKDIR /app
 
